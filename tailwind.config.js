@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{html,js}","./public/*.html"],
   theme: {
-    extend: {},
+    extend: 
+    {
+      fontFamily:
+      {
+        'bebas':['Bebas Neue', 'sans-serif'],
+        'anton':['Anton', 'sans-serif']
+      }, 
+
+    },
   },
   plugins: [],
 }

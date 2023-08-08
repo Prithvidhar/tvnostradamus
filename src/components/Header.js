@@ -3,9 +3,13 @@ import React from 'react'
 const Header = () => {
   return (
     
-    <section className='bg-yellow-400 absolute top-0 flex justify-around w-screen'>
-        <h1 className='text-gray-700 text-lg'>TV Nostradamus</h1>
-        <h4 className='text-gray-700 text-lg'>An App by Prithvidhar Pudu</h4>
+    <section className='bg-yellow-400  p-3 flex justify-center w-full border-black rounded-lg '>
+        <div className='text-black font-anton flex flex-col'>
+          <h3 className='text-center text-2xl'>TV</h3>
+          <h1 className='text-2xl'>Nostradamus</h1>
+
+        </div>
+        
     </section>
 
   )
