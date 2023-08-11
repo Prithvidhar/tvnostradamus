@@ -1,12 +1,5 @@
 import React from 'react'
-// const gridstyle = {
-//   display 
-//   grid-template-columns: "repeat(2, minmax(0, 1fr))";
-// }
-// const headstyle = {
-//   grid-column:"1/2",
-  
-// }
+
 const Header = () => {
   return (
     
