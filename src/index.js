@@ -4,14 +4,8 @@ import './index.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Content from './components/Content';
-import {
-  BrowserRouter as Router,
-  Link,
-  Switch,
-  Route,
-  Redirect,
-  useParams
-} from 'react-router-dom'
+import Who from './components/Who';
+import {BrowserRouter,Routes, Route} from 'react-router-dom'
 
 import { TransitionGroup,CSSTransition } from 'react-transition-group'
 
@@ -25,11 +19,12 @@ root.render(
       <CSSTransition timeout={300}
           classNames='fade'
           key={window.location.key}>
-        <Switch location={window.location}>
-          <Route exact path="/">
-            <Content/>
-          </Route>
-        </Switch>
+        <BrowserRouter>
+          <Routes location={window.location}>
+            <Route exact path="/" element={<Content/>}/>
+            <Route exact path="/Who" element={<Who/>}/>
+          </Routes>
+        </BrowserRouter>
       </CSSTransition>
     </TransitionGroup>
     <Footer/>
