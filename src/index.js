@@ -8,6 +8,7 @@ import Who from './components/Who';
 import {BrowserRouter,Routes, Route} from 'react-router-dom'
 
 import { TransitionGroup,CSSTransition } from 'react-transition-group'
+import Contact from './components/Contact';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -23,6 +24,7 @@ root.render(
           <Routes location={window.location}>
             <Route exact path="/" element={<Content/>}/>
             <Route exact path="/Who" element={<Who/>}/>
+            <Route exact path="/Contact" element={<Contact/>}/>
           </Routes>
         </BrowserRouter>
       </CSSTransition>
