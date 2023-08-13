@@ -7,7 +7,7 @@ const Contact = () => {
         <div className='sm:flex sm:row-start-2 sm:row-end-3'>
             <div className='bg-black flex flex-col text-white items-center flex-grow basis-0 sm:text-2xl text-sm p-2'>
               <img src={github} alt='github logo' className='h-3/6'></img>
-              <p>Here is my github! Most of my projects involve full stack applications that integrate some form of Machine Learning</p>
+              <p>Here is my <a href="https://github.com/Prithvidhar">github!</a> Most of my projects involve full stack applications that integrate some form of Machine Learning</p>
             </div>
             <div className='bg-github flex flex-col text-black flex-grow basis-0 justify-center sm:text-2xl text-sm p-2'>
               <h1 className='text-center sm:text-3xl text-md'>About Me</h1>
@@ -16,7 +16,7 @@ const Contact = () => {
             </div>
             <div className='bg-yellow-400 flex flex-col text-black flex-grow basis-0 justify-center sm:text-2xl  text-md p-2'>
               <h1 className='text-center'>Contact Me</h1>
-              <p className='text-center'>prithvipudu@gmail.com</p>
+              <p className='text-center'><a href='https://linkedin.com/in/prithvidharpudu'>My Linkedin Profile</a></p>
             </div>
 
 
