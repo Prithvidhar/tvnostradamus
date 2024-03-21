@@ -1,25 +1,32 @@
 import React from 'react'
 import nostradamus from "../../src/nostradamus.jpg"
 import { useState } from 'react'
-const getDetails = async (title) =>
-{
-  const API_URL = `https://www.omdbapi.com/?t=${title}&apikey=f63c48bd`
-  try
-  {
-    const response = fetch(API_URL).then((response) => response.json());
-    // const details = response.json()
-    const result = await response;
-    console.log(title)
-    console.log(result['Title']);
-  }
-  catch (err)
-  {
-    console.log('ERROR1')
-  }
-  
-}
+
 const Content = () => {
   const [title, setTitle] = useState('');
+  const getDetails = async (title) =>
+{
+  const fetch = require('node-fetch');
+
+const url = `https://api.themoviedb.org/3/search/movie?query=${title}&api_key=78b214f5097e267b839fa2e379f17232`;
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OGIyMTRmNTA5N2UyNjdiODM5ZmEyZTM3OWYxNzIzMiIsInN1YiI6IjY1ZmI3ZWM1MGJjNTI5MDEzMGFkYWNiMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Re-bdE0iRo8Oz9wtm6CpVlq8JguvslLmQw6ZyfdHCi0'
+  }
+};
+
+const res = await fetch(url, options);
+
+var film = await res.json();
+  
+
+  console.log(film);
+
+  setTitle(film.results[0].overview);
+  
+}
   return (
     <>
     <div className='sm:grid sm:grid-cols-2 h-full mt-20 gap-2 p-2 leading-10  gap-x-4  flex flex-col-reverse'>
@@ -35,14 +42,24 @@ const Content = () => {
         
         <img className="h-full w-3/4 col-start-2 col-end-3 place-self-center " alt='Nostradamus and a TV' src={nostradamus}></img>
     </div>
+    {
 
-    <div className='flex flex-col h-full bg-black rounded m-5'>
+      title ? (<div className='flex flex-col h-full bg-black rounded m-5'>
+      <p className='text-yellow-400'>{title}</p>
+    </div>) : (
+      <div className='flex flex-col h-full bg-black rounded m-5'>
       <p className='text-yellow-400'>Hello</p>
-    </div>
+      </div>
+    )
+      
+    
+    }
+    
     </>
     
     
   )
 }
+
 
 export default Content
