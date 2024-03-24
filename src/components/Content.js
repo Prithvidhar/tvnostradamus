@@ -1,16 +1,20 @@
 import React from 'react'
 import nostradamus from "../../src/nostradamus.jpg"
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Button from '@mui/material/Button';
+import { TextField,createTheme } from '@mui/material';
+import { deepOrange } from '@mui/material/colors';
 
 
 const Content = () => {
   const [title, setTitle] = useState('');
+  const prevState = useRef();
   const getDetails = async (title) =>
 {
   const fetch = require('node-fetch');
+  
 
-const url = `https://api.themoviedb.org/3/search/movie?query=${title}&api_key=78b214f5097e267b839fa2e379f17232`;
+const url = `https://api.themoviedb.org/3/search/movie?query=${prevState.current}&api_key=78b214f5097e267b839fa2e379f17232`;
 const options = {
   method: 'GET',
   headers: {
@@ -26,7 +30,9 @@ var film = await res.json();
 
   console.log(film);
 
-  setTitle(film.results[0]);
+  prevState.current = film.results[0];
+  setTitle(prevState.current)
+  
   console.log(title.overview)
   
 }
@@ -37,9 +43,9 @@ var film = await res.json();
         <p className='text-white sm:text-3xl sm:col-start-1 sm:col-end-2 text-center font-patua  text-sm'>Welcome to sanctum of TV Nostradamus</p>
         <p className='p-2 text-black sm:text-2xl sm:col-start-1 sm:col-end-2 font-patua leading-loose text-center sm:row-span-2 place-self-center bg-yellow-500 rounded-2xl  text-sm'>Thousands of shows and movies are being produced. What to watch?, the choice is overbearing. Will your favourite show die just as you're am getting invested?
             Enter the name of your show/movie to get a prediction of its rating over the next few years to help ease your frustrations</p>
-        <input type='text' placeholder='Enter your show here...' className='  sm:col-start-1 sm:col-end-2  sm:text-3xl  rounded-full p-5 bg-yellow-400 relative top-auto  text-sm'  onChange={(e)=>setTitle(e.target.value)} ></input>
+        <input type='text' placeholder='Enter your show here...' className='  sm:col-start-1 sm:col-end-2  sm:text-3xl  rounded-full p-5 bg-yellow-400 relative top-auto  text-sm'  onChange={(e)=>prevState.current = e.target.value} ></input>
         {/* <button type='button' className='self-center min-w-min w-1/4 sm:col-start-1 sm:col-end-2  sm:text-3xl  rounded-full p-5 bg-black text-yellow-400 relative top-auto  text-sm'  onClick={()=>{getDetails(title)}} >Predict!!</button> */}
-        <Button variant="contained" sx={{width: '7em',bgcolor: 'black',borderRadius: '3em', alignSelf: 'center', color:'rgba(251, 191, 36)', fontSize:'1.5em' }} onClick={()=>{getDetails(title)}}>Predict!!</Button>
+        <Button variant="contained" sx={{width: '7em',bgcolor: 'black',borderRadius: '3em', alignSelf: 'center', color:'rgba(251, 191, 36)', fontSize:'1.5em' }} onClick={()=>{getDetails(prevState.current)}}>Predict!!</Button>
       </div>
         
         
@@ -52,10 +58,10 @@ var film = await res.json();
       <div className='flex gap-2 w-full h-full justify-evenly mt-3'>
         <img src={`https://image.tmdb.org/t/p/w500/${title.poster_path}`} className='w-58 h-127 '/>
         <div className=' flex flex-col gap-2 justify-evenly'>
-          <p className='text-center sm:text-1 bg-yellow-400 text-black rounded-lg h-1/2 text-2xl leading-loose py-10 overflow-scroll'>{title.overview}</p>
-          <div className='flex w-full  justify-evenly'>
-            <p className='bg-yellow-400 text-black text-4xl leading-10 py-20 rounded-3xl px-2'>Released {`${title.release_date}`}</p>
-            <p className='bg-yellow-400 text-black text-4xl leading-10 py-20 rounded-3xl px-2'>Popularity {`${title.popularity}`}</p>
+          <p className='text-center sm:text-1 bg-yellow-400 text-black rounded-lg h-fit text-2xl leading-loose py-10'>{title.overview}</p>
+          <div className='flex w-full justify-evenly'>
+            <p className='bg-yellow-400 text-black text-2xl leading-10 py-2 rounded-3xl px-2'>Released: {`${title.release_date}`}</p>
+            <p className='bg-yellow-400 text-black text-2xl leading-10 py-2 rounded-3xl px-2'>Popularity {`${title.popularity}`}</p>
           </div>
         </div>
         
