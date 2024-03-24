@@ -7,8 +7,9 @@ import Content from './components/Content';
 import Who from './components/Who';
 import {BrowserRouter,Routes, Route} from 'react-router-dom'
 
-import { TransitionGroup,CSSTransition } from 'react-transition-group'
+
 import Contact from './components/Contact';
+// import { StyledEngineProvider } from '@mui/material/styles';
 // import { useState } from 'react';
 
 //function to get movie details
@@ -24,10 +25,7 @@ root.render(
       
     
     <Header/>
-    <TransitionGroup>
-      <CSSTransition timeout={300}
-          classNames='fade'
-          key={window.location.key}>
+    
         <BrowserRouter>
           <Routes location={window.location}>
             <Route exact path="/" element={<Content/>}/>
@@ -35,8 +33,7 @@ root.render(
             <Route exact path="/Contact" element={<Contact/>}/>
           </Routes>
         </BrowserRouter>
-      </CSSTransition>
-    </TransitionGroup>
+      
     <Footer/>
 
    

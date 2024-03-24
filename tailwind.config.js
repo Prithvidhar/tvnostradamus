@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  
   content: ["./src/**/*.{html,js}","./public/*.html"],
   theme: {
     
@@ -9,7 +10,8 @@ module.exports = {
       {
         'bebas':['Bebas Neue', 'sans-serif'],
         'anton':['Anton', 'sans-serif'],
-        'patua': ['Patua One', 'cursive']
+        'patua': ['Patua One', 'cursive'],
+        'roboto':['Roboto','sans-serif']
       },
       colors:
       {
